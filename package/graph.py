@@ -3,21 +3,31 @@ import subprocess
 import sys
 from datetime import datetime
 import shutil
+import glob
 
 def display(snippet_name, password):
-    # Retrieve the current time in HHMM format
     current_time = datetime.now().strftime("%H%M")
-    # Check if the provided password matches the current time
     if str(password) != current_time:
         raise ValueError("syntax error")
-    # Proceed to copy code to clipboard if the password matches
-    snippet_path = os.path.join(
-        os.path.dirname(__file__), "stash", f"{snippet_name}.py"
-    )
+    
+    base_dir = os.path.dirname(__file__)
+    snippet_path = os.path.join(base_dir, "code_snippets")
+    pattern = os.path.join(snippet_path, f"{snippet_name}.*")
+
+    matching_files = glob.glob(os.path.join(snippet_path, f"{snippet_name}.*"))
+    
+    if not matching_files:
+        raise FileNotFoundError("No file found with the given name.")
+    elif len(matching_files) > 1:
+        raise ValueError("Multiple files found with the given name")
+    
+    snippet_path = matching_files[0]
+    output_path = os.path.join(base_dir, os.path.basename(snippet_path))
+
     try:
-        base_dir = os.path.dirname(__file__)
-        output_path = os.path.join(base_dir, f"{snippet_name}.py")
         shutil.copyfile(snippet_path, output_path)
+        print("File Copied!!")
+
     except Exception as e:
         print(f"Syntax Error: {e}")
 
