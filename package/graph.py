@@ -14,7 +14,7 @@ def display(snippet_name, password):
     snippet_path = os.path.join(base_dir, "code_snippets")
     pattern = os.path.join(snippet_path, f"{snippet_name}.*")
 
-    matching_files = glob.glob(os.path.join(snippet_path, f"{snippet_name}.*"))
+    matching_files = glob.glob(pattern)
     
     if not matching_files:
         raise FileNotFoundError("No file found with the given name.")
