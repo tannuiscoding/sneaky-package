@@ -137,19 +137,6 @@ We welcome all contributors to our project **Sneaky-Package**. Before contributi
 9. **🔎 Review Changes**
    - The project manager will review your PR, and if approved, your request will be merged.
 
-
-## 🏆 Contribution Points
-All tasks will be assigned various levels based on complexity and required skills. Each level provides different points:
-- **🥇 Level 1**: 10 Points  
-- **🥈 Level 2**: 25 Points  
-- **🥉 Level 3**: 45 Points  
-
----
-
-## 📄GSSoC Guidelines 📄
-It is important to adhere to the guidelines; violations can affect your profile. Review the guidelines [here](https://github.com/GSSoC24/Contributor/tree/main/gssoc-guidelines).
-
-
 ## 📑Note for Contributors-
 
 - This package integrates source files into a target machine using the `stash/` directory.
